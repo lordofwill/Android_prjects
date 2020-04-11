@@ -2,13 +2,12 @@ package com.example.roomdbpractice;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.room.Room;
-
-import android.os.AsyncTask;
+import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,36 +23,38 @@ public class MainActivity extends AppCompatActivity {
         mTodoEditText = findViewById(R.id.todo_edit);
         mResultTextView = findViewById(R.id.result_text);
 
-        final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class,"todo-db").build();
+        MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
 
-        db.todoDao().getAll().observe(this, new Observer<List<Todo>>() {
+         //UI 갱신
+        viewModel.getAll().observe(this, new Observer<List<Todo>>() {
             @Override
             public void onChanged(List<Todo> todos) {
                 mResultTextView.setText(todos.toString());
             }
         });//UI 갱신부분
 
-
-
         findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new InsertAsyncTask(db.todoDao()).execute(new Todo(mTodoEditText.getText().toString()));
+                viewModel.insert(new Todo(mTodoEditText.getText().toString()));
             }
         });//버튼 클릭시 DB에 넣음
+
+        findViewById(R.id.add_button).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(getApplicationContext(),"삭제미구현",Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        });//버튼 클릭시 DB의 해당 항목 삭제
+
+        findViewById(R.id.clear_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.clear();
+            }
+        });
     }
 
-    private  static class InsertAsyncTask extends AsyncTask<Todo, Void, Void> {
-        private TodoDao mTodoDao;
-
-        public InsertAsyncTask(TodoDao todoDao) {
-            this.mTodoDao = todoDao;
-        }
-
-        @Override
-        protected Void doInBackground(Todo... todos) {
-            mTodoDao.insert(todos[0]);//넘어온 것 중 하나만 보낸다?
-            return null;
-        }
-    }
 }

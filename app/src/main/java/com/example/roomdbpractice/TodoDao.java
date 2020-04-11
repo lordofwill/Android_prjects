@@ -15,6 +15,9 @@ public interface TodoDao {
     @Query("SELECT * FROM Todo")
     LiveData<List<Todo>> getAll();//변경될 때마다 보이게됨.여기서 livedata 그리고 메인에서 observe로..
 
+    @Query("DELETE FROM Todo ")
+    void clear();
+
     @Insert
     void insert(Todo todo);
 
@@ -22,7 +25,9 @@ public interface TodoDao {
     void update(Todo todo);
 
     @Delete
-    void delete(Todo todo);
+    void delete(Todo... todo);
+
+
 }
 
 
