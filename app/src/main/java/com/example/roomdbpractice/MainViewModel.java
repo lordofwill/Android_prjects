@@ -15,7 +15,6 @@ public class MainViewModel extends AndroidViewModel {
 
     public MainViewModel(@NonNull Application application) {
         super(application);
-
         db = Room.databaseBuilder(application, AppDatabase.class, "todo-db").build();
     }
 
@@ -26,6 +25,10 @@ public class MainViewModel extends AndroidViewModel {
     void insert(Todo todo) {
         new InsertAsyncTask(db.todoDao()).execute(todo);
     }
+
+    void erase(String toErase) {
+        new eraseAsyncTask(db.todoDao()).execute(toErase);
+    }//
 
     void clear() {
         new ClearAsyncTask(db.todoDao()).execute();
@@ -45,6 +48,21 @@ public class MainViewModel extends AndroidViewModel {
         }
     }
 
+    private  static class eraseAsyncTask extends AsyncTask<String, Void, Void> {
+        private TodoDao mTodoDao;
+
+        eraseAsyncTask(TodoDao todoDao) {
+            this.mTodoDao = todoDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            mTodoDao.erase(strings[0]);//넘어온 것 중 하나만 보낸다?
+            return null;
+        }
+    }//
+
     private  static class ClearAsyncTask extends AsyncTask<Todo, Void, Void> {
         private TodoDao mTodoDao;
 
@@ -55,6 +73,7 @@ public class MainViewModel extends AndroidViewModel {
         @Override
         protected Void doInBackground(Todo... todos) {
             mTodoDao.clear();
+
             return null;
         }
     }

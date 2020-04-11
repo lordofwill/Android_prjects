@@ -18,6 +18,9 @@ public interface TodoDao {
     @Query("DELETE FROM Todo ")
     void clear();
 
+    @Query("DELETE FROM Todo WHERE title= :notToDo")
+    void erase(String notToDo);
+
     @Insert
     void insert(Todo todo);
 
@@ -25,7 +28,7 @@ public interface TodoDao {
     void update(Todo todo);
 
     @Delete
-    void delete(Todo... todo);
+    void delete(Todo todo);
 
 
 }

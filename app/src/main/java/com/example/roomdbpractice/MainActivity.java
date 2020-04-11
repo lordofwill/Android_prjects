@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Todo> todos) {
                 mResultTextView.setText(todos.toString());
+
             }
         });//UI 갱신부분
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 Toast.makeText(getApplicationContext(),"삭제미구현",Toast.LENGTH_SHORT).show();
-
+                viewModel.erase(mTodoEditText.getText().toString());
                 return true;
             }
         });//버튼 클릭시 DB의 해당 항목 삭제
