@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item1"
+        android:icon="@drawable/icon_main"
+        android:title="코로나현황"/>
+    <item
+        android:id="@+id/menu_item2"
+        android:icon="@drawable/icon_menuhospital5"
+        android:title="선별진료소"/>
+    <item
+        android:id="@+id/menu_item3"
+        android:icon="@drawable/notification_icon"
+        android:title="공적마스크"/>
+    <item
+        android:id="@+id/menu_item4"
+        android:icon="@drawable/icon_news"
+        android:title="뉴스피드"/>
+    <item
+        android:id="@+id/menu_item5"
+        android:icon="@drawable/icon_information"
+        android:title="코로나정보"/>
+</menu>

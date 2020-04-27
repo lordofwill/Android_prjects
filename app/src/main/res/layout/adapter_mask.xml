@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/icon_a"
+        android:layout_centerVertical="true"
+        android:src="@drawable/marker_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:id="@+id/mask_adapter_text1"
+        android:text="판매처 이름"
+        android:textColor="#413139"
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icon_a"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:bufferType="spannable"
+        />
+
+    <TextView
+        android:id="@+id/mask_adapter_text2"
+        android:text="판매처 주소"
+        android:textSize="11dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mask_adapter_text1"
+        android:layout_alignLeft="@id/mask_adapter_text1"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/mask_adapter_text3"
+        android:text="거리m"
+        android:textSize="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/mask_adapter_text1"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/mask_adapter_text4"
+        android:text="재고량"
+        android:textColor="#413139"
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/mask_adapter_text2"
+        />
+
+</RelativeLayout>
