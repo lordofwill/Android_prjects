@@ -6,94 +6,101 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp">
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:padding="3dp"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"
+                android:gravity="center"
+                android:text="1.코로나 예방수칙"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/preventive1" />
-
-            <ImageView
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"
+                android:gravity="center"
+                android:text="6.자가격리자 안내서"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/preventive2" />
-
-            <ImageView
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"
+                android:gravity="center"
+                android:text="3.입국자 주의사항"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/preventive3" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/preventive4" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/preventive5" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/preventive6" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#111111"
-                    android:gravity="center|bottom"
-                    android:text="코로나 자가격리 도우미"
-                    android:textColor="#88ffffff"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="11dp"
-                    android:background="#111111"
-                    android:gravity="center"
-                    android:text="광주인력개발원 : 광주광역시 광산구 어룡동 소촌로152번길 37"
-                    android:textColor="#55ffffff"
-                    android:textSize="9sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#111111"
-                    android:gravity="center|top"
-                    android:text="정보제공: 질병관리본부"
-                    android:textColor="#55ffffff"
-                    android:textSize="9sp" />
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
         </LinearLayout>
-    </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"                android:gravity="center"
+                android:text="정부방역대책 안내"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"                android:gravity="center"
+                android:text="9.사회적 거리두기"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"                android:gravity="center"
+                android:text="8. 장소별 거리두기 지침"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
 
+    <WebView
+        android:layout_marginTop="7dp"
+        android:id="@+id/web2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#111111"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정보제공: 질병관리본부 "
+            android:textStyle="bold"
+            android:textColor="#55ffffff"
+            android:textSize="9sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" http://ncov.mohw.go.kr/duBoardList.do?brdId=2&amp;brdGubun=21"
+            android:textColor="#55ffffff"
+            android:textSize="9sp" />
+    </LinearLayout>
 </LinearLayout>

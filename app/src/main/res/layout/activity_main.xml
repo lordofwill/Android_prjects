@@ -31,7 +31,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/cafe24simplehae"
                 android:gravity="center"
-                android:text="코로나 자가격리 도우미"
+                android:text="코로나 서포터"
                 android:textColor="#000"
                 android:textSize="20sp" />
 
@@ -85,7 +85,7 @@
             android:fontFamily="@font/cafe24simplehae"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:text="코로나 자가격리 도우미"
+            android:text="코로나 서포터"
             android:textColor="@color/fontColor"
             android:textSize="20sp" />
 
