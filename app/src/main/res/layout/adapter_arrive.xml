@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/icon_a"
+        android:src="@drawable/icon_arrive"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/text1_a"
+        android:text="정류장 이름"
+        android:textSize="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icon_a"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:bufferType="spannable"
+        />
+
+    <TextView
+        android:id="@+id/text2_a"
+        android:text="number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text1_a"
+        android:layout_alignLeft="@id/text1_a"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/justText1"
+        android:text="도착예정시간"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/text3_a"
+        android:text="20분"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/justText1"
+        />
+
+</RelativeLayout>
