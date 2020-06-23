@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/droneok"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/droneImage"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="현재 날씨"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/temperaturesText"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#0dadff"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="풍속"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/wind_speed"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#0dadff"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="습도"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#0dadff"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="자기장"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/currentP"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#0dadff"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="normal"
+            android:textColor="#bdbebd"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="본인의 판단에 드론날다는 책임지지 않습니다."
+             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+
+
+</LinearLayout>
