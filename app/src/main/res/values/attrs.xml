@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ColorLegend">
+        <attr name="color_box_width" format="dimension"/>
+        <attr name="color_box_height" format="dimension"/>
+        <attr name="title_font_size" format="dimension"/>
+        <attr name="title_font_color" format="integer"/>
+        <attr name="gap_box_title" format="dimension"/>
+        <attr name="gap_items" format="dimension"/>
+        <attr name="toggle_image_src" format="reference"/>
+        <attr name="toggle_image_scale" format="float"/>
+        <attr name="cover_corner_radius" format="dimension"/>
+        <attr name="cover_color" format="integer"/>
+    </declare-styleable>
+    
+</resources>
+
