@@ -13,6 +13,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -35,7 +36,7 @@ public class ColorLegend extends View implements GestureDetector.OnGestureListen
     private float _colorBoxHeight = 40f;//
     private float _titleFontSize = 40f;//
     private int _titleFontColor = Color.WHITE;
-    private int _toggleImageSrc;//토글 이미지 상대 주소
+    private int _toggleImageSrc=0;//토글 이미지 상대 주소
     private float _toggleImageScale=1.0f;//토글 이미지의 범례색상과 비교 배율
 //    private int _toggleMarkColor = Color.WHITE;//토글 스위치 표시의 색
 //    private float _toggleMarkRadius = 6.0f;//토글 스위치 표시의 크기
@@ -53,12 +54,14 @@ public class ColorLegend extends View implements GestureDetector.OnGestureListen
     private List<RectF> _colorboxRect = new ArrayList<>();//colorbox의 좌표를 받는 곳
     private Paint _titlePaint = new Paint(Paint.ANTI_ALIAS_FLAG); //범례 제목 페인트
     private Paint _colorBoxPaint = new Paint(Paint.ANTI_ALIAS_FLAG);// 범례 상자 페인트
-    private Paint _togglePaint = new Paint(Paint.ANTI_ALIAS_FLAG);//토글스위치 페인트
+//    private Paint _togglePaint = new Paint(Paint.ANTI_ALIAS_FLAG);//토글스위치 페인트
+    private Drawable _drawable; //토글스위치의 이미지를 그리는 페인트
     private final float[] TEMPRESULT = new float[2]; //임시저장용이며 이미지작업의 자원낭비 감소
     private List<OnMyTapListener> _listeners = new ArrayList<>();//뷰와 메인액티비티의 이동을 위한 리스너 리스트
     //화면 계산을 위해 쓰이는 것
     private DisplayMetrics _dm = new DisplayMetrics();
     private WindowManager _windowManager = (WindowManager) getContext().getApplicationContext().getSystemService(_context.WINDOW_SERVICE);
+
     //.
 
     //생성자
@@ -253,7 +256,9 @@ public class ColorLegend extends View implements GestureDetector.OnGestureListen
         _titlePaint.setColor(_titleFontColor);
         _titlePaint.setTextSize(_titleFontSize);
         _titlePaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        Drawable _drawable = getResources().getDrawable(_toggleImageSrc);
+        if(_toggleImageSrc !=0)
+            _drawable = getResources().getDrawable(_toggleImageSrc);
+
 
         for (int i = 0; i < _legend.size(); i++) {
             _colorBoxPaint.setColor(getItem(i).getColor());
@@ -266,13 +271,11 @@ public class ColorLegend extends View implements GestureDetector.OnGestureListen
             _colorboxRect.add(rect);
             canvas.drawText(getItem(i).getTitle(), _x + _colorBoxWidth + _boxTextGap, _y + _colorBoxHeight /2 + _titleFontSize /3 , _titlePaint);
 
-            if(getItem(i).getToggleSwitch()==true){
-
+            if(getItem(i).getToggleSwitch()==true&&_toggleImageSrc !=0){
                 //표시를 image file로 넣을 시
-               Rect picrect= new Rect((int) (_x + _colorBoxWidth*(1-_toggleImageScale)/2) ,(int) (_y + _colorBoxHeight*(1-_toggleImageScale)/2),(int)(_x + _colorBoxWidth*(1+_toggleImageScale)/2),(int)(_y + _colorBoxHeight*(1+_toggleImageScale)/2));
-                _drawable.setBounds(picrect);
-                _drawable.draw(canvas);
-
+                    Rect picrect = new Rect((int) (_x + _colorBoxWidth * (1 - _toggleImageScale) / 2), (int) (_y + _colorBoxHeight * (1 - _toggleImageScale) / 2), (int) (_x + _colorBoxWidth * (1 + _toggleImageScale) / 2), (int) (_y + _colorBoxHeight * (1 + _toggleImageScale) / 2));
+                    _drawable.setBounds(picrect);
+                    _drawable.draw(canvas);
                 //표시를 도형으로 넣을 시
 //                canvas.drawCircle(_x+ColorBoxWidth/2,_y,ToggleMarkRadius,TogglePaint);
             }
