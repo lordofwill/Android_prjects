@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -26,18 +27,19 @@ public class TouchFollowingDot extends View {
     private float _mRadius = 80f;
     private final Paint MPAINT = new Paint();
 
-    private static final int ANIMATION_DURATION = 5000;
-    private static final long ANIMATION_DELAY = 1000;
+    private static final int ANIMATION_DURATION = 1000;
     private ObjectAnimator _xAnimator;
     private AnimatorSet _mPulseAnimatorSet = new AnimatorSet();
     private Path _followingPath = new Path();
+    private PathMeasure _movementLength;
 
+    //for coordinates where I tap
     private float _mX=500f;
     private float _mY=800;
-
+    //for coordinates where ball should start move after first tap
     private float _lX=0;
     private float _lY=0;
-
+    //for coordinates where ball should be headed when tapped
     private float _dX =0;
     private float _dY =0;
 
@@ -67,23 +69,22 @@ public class TouchFollowingDot extends View {
             _mX=event.getX();
             _mY=event.getY();
             _followingPath.reset();
-
             _followingPath.setLastPoint(_lX,_lY);
             _followingPath.lineTo(_mX, _mY);
-            _followingPath.moveTo(_mX,_mY);
+            _movementLength = new PathMeasure(_followingPath, false);
+            final long _mv =
+                    /*(long)(1 + (Math.random()*3000));*/
+                    (long)_movementLength.getLength();
+            Log.i("^^V", String.valueOf(_mv));
 
             _xAnimator = ObjectAnimator.ofFloat(this, "xCoordinate", "yCoordinate", _followingPath);
-            _xAnimator.setDuration(ANIMATION_DURATION);
-            _xAnimator.setInterpolator(new AnticipateInterpolator());
+            _xAnimator.setDuration(ANIMATION_DURATION /*+ _mv*/ );//the place need to be fixed
+            _xAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
             _mPulseAnimatorSet.play(_xAnimator);
 
-            Log.d("^^",""+_mX);
             if(_mPulseAnimatorSet != null && _mPulseAnimatorSet.isRunning()) {
+                //cannot get lX,lY coordinate with getAnimatedValue method..and cannot know why
                 _mPulseAnimatorSet.cancel();
-
-
-            } else {
-
             }
             _mPulseAnimatorSet.start();
             _lX=_mX;
@@ -92,42 +93,13 @@ public class TouchFollowingDot extends View {
             _xAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    Log.d("^ㅠ^", "" + (float)_xAnimator.getAnimatedValue("xCoordinate"));
                     _lX=(float)_xAnimator.getAnimatedValue("xCoordinate");
                     _lY=(float) _xAnimator.getAnimatedValue("yCoordinate" );
                     invalidate();
                 }
             });
-
-
-
         }
         return super.onTouchEvent(event);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-//        _followingPath.lineTo(_mX, _mY);
-//        _xAnimator = ObjectAnimator.ofFloat(this, "xCoordinate", "yCoordinate", _followingPath);
-//        _xAnimator.setDuration(ANIMATION_DURATION);
-//        _xAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-
-//        ObjectAnimator _yAnimator = ObjectAnimator.ofFloat(this, "yCoordinate", _mY);
-//        _yAnimator.setDuration(ANIMATION_DURATION);
-//        _yAnimator.setInterpolator(new LinearInterpolator());
-//
-//        _mPulseAnimatorSet.play(_xAnimator).with(_yAnimator);
-
-//        ObjectAnimator repeatAnimator = ObjectAnimator.ofFloat(this, "xCoordinate", "yCoordinate", _followingPath);
-//        repeatAnimator.setStartDelay(ANIMATION_DELAY);
-//        repeatAnimator.setDuration(ANIMATION_DURATION);
-//
-//        repeatAnimator.setRepeatCount(1);
-//
-//        repeatAnimator.setRepeatCount(ValueAnimator.REVERSE);
-
-//        _mPulseAnimatorSet.play(_xAnimator);
     }
 
     @Override
@@ -135,18 +107,5 @@ public class TouchFollowingDot extends View {
         super.onDraw(canvas);
         canvas.drawCircle(_dX,_dY,_mRadius,MPAINT);
     }
-
-    protected void xMovementAnimation() {
-        ObjectAnimator _xAnimator = ObjectAnimator.ofFloat(this, "xCoordinate", _dX);
-        _xAnimator.setDuration(ANIMATION_DURATION);
-        _xAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    }
-
-    protected void yMovementAnimation() {
-        ObjectAnimator _yAnimator = ObjectAnimator.ofFloat(this, "yCoordinate", _dY);
-        _yAnimator.setDuration(ANIMATION_DURATION);
-        _yAnimator.setInterpolator(new LinearInterpolator());
-    }
-
 
 }
