@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kotlin_Json_writting</string>
+    <string name="btn_save">Save json</string>
+</resources>
