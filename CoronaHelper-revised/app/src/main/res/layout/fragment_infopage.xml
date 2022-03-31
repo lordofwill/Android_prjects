@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:padding="3dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"
+                android:gravity="center"
+                android:text="1.코로나 예방수칙"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"
+                android:gravity="center"
+                android:text="6.자가격리자 안내서"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"
+                android:gravity="center"
+                android:text="3.입국자 주의사항"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"                android:gravity="center"
+                android:text="정부방역대책 안내"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"                android:gravity="center"
+                android:text="9.사회적 거리두기"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#413139"
+                android:textSize="13dp"
+                android:background="@drawable/round_box_border"                android:gravity="center"
+                android:text="8. 장소별 거리두기 지침"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <WebView
+        android:layout_marginTop="7dp"
+        android:id="@+id/web2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#111111"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정보제공: 질병관리본부 "
+            android:textStyle="bold"
+            android:textColor="#55ffffff"
+            android:textSize="9sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" http://ncov.mohw.go.kr/duBoardList.do?brdId=2&amp;brdGubun=21"
+            android:textColor="#55ffffff"
+            android:textSize="9sp" />
+    </LinearLayout>
+</LinearLayout>

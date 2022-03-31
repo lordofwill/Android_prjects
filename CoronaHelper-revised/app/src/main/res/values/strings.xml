@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">코로나서포터</string>
+    <string name="menu">menu</string>
+    <string name="todo">TODO</string>
+</resources>
